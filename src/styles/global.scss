@@ -1,0 +1,71 @@
+/* ==================
+==== Colors ==========
+=====================
+**/
+
+$primary: rgba(84, 95, 125, 1);
+$primary-15: rgba(84, 95, 125, 0.15);
+$secondary: rgba(33, 63, 125, 1);
+$app-lemon: rgba(57, 205, 204, 1);
+$app-red: rgba(228, 3, 59, 1);
+$app-green: rgba(57, 205, 98, 1);
+$app-yellow: rgba(233, 178, 0, 1);
+
+/*===================
+===== Breakpoints ==========
+=====================
+**/
+
+$break-point-s: 576px;
+$break-point-md: 782px;
+$break-point-l: 992px;
+$break-point-xl: 1024px;
+$break-point-xxl: 1200px;
+
+/* ==================
+==== Fonts ==========
+=====================
+**/
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../assets/fonts/avenir-next/AvenirNextLTPro-Regular.otf")
+    format("truetype");
+  font-display: swap;
+}
+
+/*===================
+===== ELEMENTS AND CLASSES ==========
+=====================
+**/
+
+h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  //   line-height: 55px;
+  margin-bottom: 10px;
+  color: $secondary;
+}
+
+.btn {
+  border-radius: 8px;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  padding: 12px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.btn--primary {
+  width: 100%;
+  background-color: $app-lemon;
+  border-color: $app-lemon;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 16px;
+}
