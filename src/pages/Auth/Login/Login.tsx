@@ -1,9 +1,11 @@
-import illustration from "../../assets/svg/illustration.svg";
-import logo from "../../assets/svg/lendsqr-logo.svg";
-import { Button, FormInput } from "../../components";
+import illustration from "../../../assets/svg/illustration.svg";
+import logo from "../../../assets/svg/lendsqr-logo.svg";
+import { Button, FormInput } from "../../../components";
 import styles from "./login.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles["login-container"]}>
       <div className={styles["side-illustration"]}>
@@ -23,7 +25,11 @@ const Login = () => {
             <span>Enter details to login.</span>
           </div>
 
-          <form>
+          <form
+            onSubmit={() => {
+              navigate("/users");
+            }}
+          >
             <FormInput name="email" type="email" placeholder="Email" />
             <FormInput name="password" type="password" placeholder="Password" />
 

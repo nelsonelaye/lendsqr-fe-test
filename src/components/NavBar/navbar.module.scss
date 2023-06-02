@@ -1,0 +1,100 @@
+@import "../../styles/global.scss";
+
+.navbar-container {
+  padding: 20px 30px;
+  position: fixed;
+  width: 100%;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.search-bar {
+  background: #ffffff;
+  border: 1px solid $secondary-20;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  width: 400px;
+  height: 40px;
+
+  input {
+    border: 0;
+    outline: none;
+    padding: 12px 20px;
+    opacity: 0.2;
+
+    ::placeholder {
+      font-weight: 400;
+      font-size: 14px;
+      color: $primary;
+    }
+  }
+
+  .suffixIcon {
+    background-color: $app-lemon;
+    color: #fff;
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.extras {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $secondary;
+
+  .docs {
+    text-decoration: underline;
+    font-family: "Roboto", sans-serif;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .bell {
+    margin: 0 10px;
+    font-size: 24px;
+  }
+
+  .profile-photo {
+    border-radius: 100%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
+
+  .profile-name {
+    font-weight: 500;
+  }
+}
+
+@media screen and (max-width: $break-point-md) {
+  .search-bar {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $break-point-s) {
+  .docs,
+  .bell,
+  .profile-name {
+    display: none;
+  }
+
+  .profile-photo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navbar-container {
+    padding: 15px 20px;
+  }
+}

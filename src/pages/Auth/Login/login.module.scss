@@ -1,4 +1,4 @@
-@import "../../styles/global.scss";
+@import "../../../styles/global.scss";
 
 .login-container {
   display: grid;
@@ -38,6 +38,7 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin: 20px 0px 30px;
+    cursor: pointer;
   }
 }
 
