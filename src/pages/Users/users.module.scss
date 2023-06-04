@@ -1,0 +1,75 @@
+@import "../../styles/global.scss";
+
+.stats-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 30px 0;
+}
+
+.table-container {
+  background: #ffffff;
+  border: 1px solid $secondary-6;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  padding: 30px;
+  margin-bottom: 20px;
+  overflow: auto;
+  width: 100%;
+
+  table {
+    width: 100%;
+    text-align: left;
+    color: $primary;
+
+    th {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      padding-bottom: 15px;
+      white-space: nowrap;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    tbody tr:last-child {
+      border-bottom: 0px;
+    }
+
+    td {
+      font-weight: 400;
+      font-size: 14px;
+      padding: 23px 0;
+      border-bottom: 1px solid $secondary-10;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    td:nth-child(3) {
+      text-transform: lowercase;
+    }
+  }
+
+  .menu-dropdown {
+    padding: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $primary;
+
+    .dropdown {
+      z-index: 100;
+      position: absolute;
+      left: -1100px;
+      top: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: $break-point-md) {
+}

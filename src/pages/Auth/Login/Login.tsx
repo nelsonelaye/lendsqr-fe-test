@@ -35,7 +35,9 @@ const Login = () => {
 
             <p className={styles["forget-password"]}>Forgot PASSWORD?</p>
 
-            <Button type="submit">Log in</Button>
+            <Button variant="primary" type="submit">
+              Log in
+            </Button>
           </form>
         </div>
       </div>

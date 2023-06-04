@@ -26,21 +26,21 @@ const SideBar = () => {
       <div style={{ marginBottom: "30px" }}>
         <h3 className={styles["nav-group-title"]}>Customers</h3>
         {customerNavigations?.map(({ title, imageSrc, link }) => (
-          <NavItem imageSrc={imageSrc} title={title} link={link} />
+          <NavItem imageSrc={imageSrc} title={title} link={link} key={title} />
         ))}
       </div>
 
       <div style={{ marginBottom: "30px" }}>
         <h3 className={styles["nav-group-title"]}>businesses</h3>
         {businessNavigations?.map(({ title, imageSrc, link }) => (
-          <NavItem imageSrc={imageSrc} title={title} link={link} />
+          <NavItem imageSrc={imageSrc} title={title} link={link} key={title} />
         ))}
       </div>
 
       <div style={{ marginBottom: "30px" }}>
         <h3 className={styles["nav-group-title"]}>settings</h3>
         {settingsNavigations?.map(({ title, imageSrc, link }) => (
-          <NavItem imageSrc={imageSrc} title={title} link={link} />
+          <NavItem imageSrc={imageSrc} title={title} link={link} key={title} />
         ))}
       </div>
 

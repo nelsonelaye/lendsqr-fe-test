@@ -2,8 +2,18 @@
 
 .layout-container {
   display: flex;
+  background-color: $app-grey;
 }
 
 main {
-  padding-top: 100px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 160px 60px 60px 300px;
+  background-color: $app-grey;
+}
+
+@media screen and (max-width: $break-point-md) {
+  main {
+    padding: 130px 30px 60px;
+  }
 }
