@@ -7,22 +7,43 @@ import dayjs from "dayjs";
 import { HiDotsVertical } from "react-icons/hi";
 import useFetchUsers from "../../hooks/userHooks/useFetchUsers";
 import { userInterface } from "../../types/userInterface";
-import { Menu, Loader } from "@mantine/core";
+import { Menu, Loader, Pagination } from "@mantine/core";
 import { BsEye } from "react-icons/bs";
 import activate from "../../assets/svg/activate-user.svg";
 import blacklist from "../../assets/svg/blacklist-user.svg";
 import { Link } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
+
 const Users = () => {
   const [users, setUsers] = useState<Array<userInterface>>([]);
   const [opened, setOpened] = useState(true);
   const { fetchAllUsers } = useFetchUsers();
+  const [offset, setOffset] = useState(0);
+  const [itemsPerPage] = useState(10);
+  const [pageCount, setPageCount] = useState(0);
+  const [userData, setUserData] = useState<Array<userInterface>>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleFetchUsers = () => {
+    setIsLoading(true);
     fetchAllUsers().then((res) => {
+      setIsLoading(false);
+
       if (res !== undefined) {
         setUsers(res);
+
+        setPageCount(Math.ceil(res.length / itemsPerPage));
+        setUserData(res?.slice(offset, offset + itemsPerPage));
+        setOffset(offset + itemsPerPage);
       }
     });
+  };
+
+  const handlePageClick = (selectedPage: any) => {
+    console.log(selectedPage * itemsPerPage);
+    // (pageCount - 1) * itemsPerPage + 1
+    setOffset((selectedPage * itemsPerPage) % users.length);
+    handleFetchUsers();
   };
 
   useEffect(() => {
@@ -52,11 +73,9 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users.length === 0 && (
-              <Loader color="#545F7D" style={{ margin: "auto" }} />
-            )}
-            {users.length > 0 &&
-              users?.map((user) => (
+            {isLoading && <Loader color="#545F7D" style={{ margin: "auto" }} />}
+            {userData.length > 0 &&
+              userData?.map((user) => (
                 <tr key={user.id}>
                   <td>{user.orgName}</td>
                   <td>
@@ -122,6 +141,35 @@ const Users = () => {
               ))}
           </tbody>
         </table>
+      </div>
+      <div className={styles["pagination-section"]}>
+        <div className={styles["pagination-tracker"]}>
+          <span>Showing</span>
+
+          <div className={styles["current"]}>
+            <span style={{ marginRight: "10px" }}> {offset}</span>{" "}
+            <IoIosArrowDown />
+          </div>
+          <span>out of {users.length}</span>
+        </div>
+        <Pagination
+          onChange={handlePageClick}
+          total={users.length / itemsPerPage}
+          position="right"
+          styles={(theme) => ({
+            control: {
+              background: "transparent",
+              fontWeight: 400,
+              color: "#545F7D",
+              border: "0px",
+              "&[data-active]": {
+                background: "transparent",
+                fontWeight: 500,
+                color: "#545F7D",
+              },
+            },
+          })}
+        />
       </div>
     </Layout>
   );

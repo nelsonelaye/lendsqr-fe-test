@@ -5,6 +5,7 @@ import styles from "./userDetails.module.scss";
 import { AiOutlineUser } from "react-icons/ai";
 import { Rating, Tabs, TabsProps } from "@mantine/core";
 import { BsStar, BsStarFill } from "react-icons/bs";
+import GeneralDetails from "./components/GeneralDetails";
 
 function StyledTabs(props: TabsProps) {
   return (
@@ -20,14 +21,10 @@ function StyledTabs(props: TabsProps) {
               ? theme.colors.dark[0]
               : "rgba(0, 0, 0, 0.8)",
           border: `0px solid ${theme.colors.gray[4]}`,
-          padding: `0px 20px`,
+          padding: `0px 20px 10px`,
           cursor: "pointer",
           fontSize: "16px",
-          //   display: "flex",
-          //   alignItems: "center",
           fontWeight: 400,
-          //   marginRight: "30px",
-          //   fontFamily: "SF Compact Text",
           fontStyle: "normal",
           lineHeight: "19px",
           textAlign: "center",
@@ -40,8 +37,8 @@ function StyledTabs(props: TabsProps) {
 
         tabsList: {
           display: "flex",
+          justifyContent: "space-between",
           width: "100%",
-          //   borderBottom: `1px solid ${theme.colors.gray[4]}`,
         },
       })}
       {...props}
@@ -113,7 +110,7 @@ const UserDetails = () => {
         </div>
 
         <StyledTabs defaultValue="general">
-          <Tabs.List>
+          <Tabs.List grow>
             <Tabs.Tab value="general">General Details</Tabs.Tab>
             <Tabs.Tab value="documents">Documents</Tabs.Tab>
             <Tabs.Tab value="bank-details">Bank Details</Tabs.Tab>
@@ -127,7 +124,7 @@ const UserDetails = () => {
       <div className={styles["view-details"]}>
         <StyledTabs defaultValue="general">
           <Tabs.Panel value="general" pt="xs">
-            m
+            <GeneralDetails />
           </Tabs.Panel>
 
           <Tabs.Panel value="documents" pt="xs">

@@ -1,0 +1,20 @@
+@import "../../styles/global.scss";
+
+.detail-holder {
+  margin-bottom: 30px;
+}
+
+.detail-title {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: $primary;
+  margin-bottom: 8px;
+}
+.detail-value {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: $primary;
+}
