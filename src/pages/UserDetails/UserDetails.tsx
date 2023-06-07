@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { Button, Layout } from "../../components";
 import { HiOutlineArrowLongLeft } from "react-icons/hi2";
 import styles from "./userDetails.module.scss";
@@ -6,6 +7,8 @@ import { AiOutlineUser } from "react-icons/ai";
 import { Rating, Tabs, TabsProps } from "@mantine/core";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import GeneralDetails from "./components/GeneralDetails";
+import useFetchUser from "../../hooks/userHooks/useFetchUser";
+import { userInterface } from "../../types/userInterface";
 
 function StyledTabs(props: TabsProps) {
   return (
@@ -47,6 +50,21 @@ function StyledTabs(props: TabsProps) {
 }
 
 const UserDetails = () => {
+  const { fetchUser } = useFetchUser();
+  const [values, setValues] = useState<userInterface>();
+  const { id } = useParams();
+
+  const handleUserDetails = () => {
+    if (id) {
+      fetchUser(id).then((res) => {
+        setValues(res.data);
+      });
+    }
+  };
+
+  useEffect(() => {
+    handleUserDetails();
+  }, []);
   return (
     <Layout>
       <Link to="/users" className={styles["navigate-back"]}>
@@ -61,37 +79,29 @@ const UserDetails = () => {
         </span>
       </Link>
 
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap" }}>
         <h2>Users Details</h2>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginLeft: "auto",
-            gap: "20px",
-          }}
-        >
+        <div className={styles["active-btns"]}>
           <Button variant="blacklist">Blacklist user</Button>
           <Button variant="activate">Blacklist user</Button>
         </div>
       </div>
 
       <div className={styles["top-details"]}>
-        <div
-          style={{
-            display: "flex",
-            gap: "20px",
-            alignItems: "center",
-            marginBottom: "30px",
-          }}
-        >
-          <div className={styles["profile-photo"]}>
+        <div className={styles["highlight"]}>
+          {/* <div className={styles["profile-photo"]}>
             <AiOutlineUser />
-          </div>
-          {/* <img src="" alt="" className={styles["profile-photo"]} /> */}
-          <div>
-            <h2 className={styles["top-details-title"]}>Grace Effiom</h2>
-            <span className={styles["username"]}>LSQFf587g90</span>
+          </div> */}
+          <img
+            src={values?.profile.avatar}
+            alt=""
+            className={styles["profile-photo"]}
+          />
+          <div className={styles["top-text"]}>
+            <h2
+              className={styles["top-details-title"]}
+            >{`${values?.profile.firstName} ${values?.profile.lastName}`}</h2>
+            <span className={styles["username"]}>{values?.userName}</span>
           </div>
           <div className={styles["tier"]}>
             User’s Tier
@@ -101,15 +111,17 @@ const UserDetails = () => {
               <BsStar />
             </div>
           </div>
-          <div>
-            <h2 className={styles["top-details-title"]}>₦200,000.00</h2>
+          <div className={styles["top-text"]}>
+            <h2 className={styles["top-details-title"]}>
+              {`₦${values?.accountBalance}`}
+            </h2>
             <span className={styles["bank-details"]}>
-              9912345678/Providus Bank
+              {`${values?.accountNumber}/ ${values?.orgName}`}
             </span>
           </div>
         </div>
 
-        <StyledTabs defaultValue="general">
+        <StyledTabs defaultValue="general" className={styles["tab"]}>
           <Tabs.List grow>
             <Tabs.Tab value="general">General Details</Tabs.Tab>
             <Tabs.Tab value="documents">Documents</Tabs.Tab>
@@ -124,7 +136,7 @@ const UserDetails = () => {
       <div className={styles["view-details"]}>
         <StyledTabs defaultValue="general">
           <Tabs.Panel value="general" pt="xs">
-            <GeneralDetails />
+            {values && <GeneralDetails values={values} />}
           </Tabs.Panel>
 
           <Tabs.Panel value="documents" pt="xs">

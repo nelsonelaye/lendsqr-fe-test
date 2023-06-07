@@ -1,0 +1,18 @@
+@import "../../../styles/global.scss";
+
+.form-label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: $primary;
+}
+
+.select-input {
+  border: 2px solid $primary-15;
+  border-radius: 5px;
+  width: 100%;
+  margin: 5px 0px 20px;
+  outline: 0px;
+  font-family: "Avenir Next";
+  padding: 12px 16px;
+}

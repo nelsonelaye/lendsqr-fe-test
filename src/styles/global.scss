@@ -5,8 +5,9 @@
 
 $primary: rgba(84, 95, 125, 1);
 $primary-6: rgba(84, 95, 125, 0.06);
-$primary-20: rgba(84, 95, 125, 0.2);
+$primary-14: rgba(84, 95, 125, 0.14);
 $primary-15: rgba(84, 95, 125, 0.15);
+$primary-20: rgba(84, 95, 125, 0.2);
 $secondary: rgba(33, 63, 125, 1);
 $secondary-6: rgba(33, 63, 125, 0.06);
 $secondary-10: rgba(33, 63, 125, 0.1);
@@ -85,7 +86,14 @@ h2 {
   background-color: $app-lemon;
   border-color: $app-lemon;
   color: #fff;
-  padding: 16px;
+  // padding: 16px;
+}
+.btn--secondary {
+  width: 100%;
+  background-color: transparent;
+  color: $primary;
+  border-color: $primary;
+  border-radius: 8px;
 }
 
 .btn--activate {

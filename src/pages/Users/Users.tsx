@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Layout, StatsCard } from "../../components";
+import { Filter, Layout, StatsCard } from "../../components";
 import { statsData, tableTitles } from "./utils/values";
 import styles from "./users.module.scss";
 import { MdFilterList } from "react-icons/md";
@@ -16,31 +16,35 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Users = () => {
   const [users, setUsers] = useState<Array<userInterface>>([]);
-  const [opened, setOpened] = useState(true);
+  const [opened] = useState(true);
   const { fetchAllUsers } = useFetchUsers();
   const [offset, setOffset] = useState(0);
   const [itemsPerPage] = useState(10);
   const [pageCount, setPageCount] = useState(0);
   const [userData, setUserData] = useState<Array<userInterface>>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFIlter, setIsFilter] = useState(false);
+
+  const handleFilterDisplay = () => {
+    setIsFilter(!isFIlter);
+  };
 
   const handleFetchUsers = () => {
     setIsLoading(true);
     fetchAllUsers().then((res) => {
       setIsLoading(false);
 
-      if (res !== undefined) {
-        setUsers(res);
+      if (res.data !== undefined) {
+        setUsers(res.data);
 
-        setPageCount(Math.ceil(res.length / itemsPerPage));
-        setUserData(res?.slice(offset, offset + itemsPerPage));
+        setPageCount(Math.ceil(res.data.length / itemsPerPage));
+        setUserData(res?.data?.slice(offset, offset + itemsPerPage));
         setOffset(offset + itemsPerPage);
       }
     });
   };
 
   const handlePageClick = (selectedPage: any) => {
-    console.log(selectedPage * itemsPerPage);
     // (pageCount - 1) * itemsPerPage + 1
     setOffset((selectedPage * itemsPerPage) % users.length);
     handleFetchUsers();
@@ -58,6 +62,8 @@ const Users = () => {
         ))}
       </div>
       <div className={styles["table-container"]}>
+        {isFIlter && <Filter onClick={handleFilterDisplay} />}
+
         <table>
           <thead>
             <tr>
@@ -65,7 +71,11 @@ const Users = () => {
                 <th key={item}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <span>{item}</span>
-                    <MdFilterList fontSize={18} cursor="pointer" />
+                    <MdFilterList
+                      fontSize={18}
+                      cursor="pointer"
+                      onClick={handleFilterDisplay}
+                    />
                   </div>
                 </th>
               ))}

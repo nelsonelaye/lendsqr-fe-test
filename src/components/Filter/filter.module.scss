@@ -1,0 +1,13 @@
+@import "../../styles/global.scss";
+
+.filter-container {
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  background-color: #fff;
+  width: 270px;
+  padding: 30px 20px;
+  border: 1px solid $primary-14;
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}

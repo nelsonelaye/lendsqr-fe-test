@@ -1,9 +1,10 @@
+import React from "react";
 import { axiosBaseInstance } from "../../services/axiosBaseInstance";
 
-const useFetchUsers = () => {
-  const fetchAllUsers = async () => {
+const useFetchUser = () => {
+  const fetchUser = async (userId: string) => {
     return await axiosBaseInstance
-      .get("/users")
+      .get(`/users/${userId}`)
       .then((res) => {
         return res;
       })
@@ -11,7 +12,8 @@ const useFetchUsers = () => {
         return err;
       });
   };
-  return { fetchAllUsers };
+
+  return { fetchUser };
 };
 
-export default useFetchUsers;
+export default useFetchUser;

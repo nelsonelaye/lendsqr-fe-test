@@ -28,3 +28,14 @@
     color: $secondary;
   }
 }
+
+@media screen and (max-width: $break-point-md) {
+  .card-container {
+    width: 320px;
+  }
+}
+@media screen and (max-width: $break-point-s) {
+  .card-container {
+    width: 100%;
+  }
+}

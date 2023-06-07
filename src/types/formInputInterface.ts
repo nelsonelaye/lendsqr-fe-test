@@ -3,4 +3,6 @@ export interface formInputInterface
   name: string;
   placeholder: string;
   suffiX?: string;
+  label?: string;
+  children?: any;
 }
