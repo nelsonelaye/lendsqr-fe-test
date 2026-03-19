@@ -1,0 +1,30 @@
+// Colors
+$primary-color: rgba(57, 205, 204, 1);
+$secondary-color: rgba(33, 63, 125, 1);
+$text-color-main: rgba(84, 95, 125, 1);
+$text-color-dark: rgba(33, 63, 125, 1);
+$background-light: rgba(251, 251, 251, 1);
+$background-dark: rgba(229, 229, 229, 1);
+$white: rgba(255, 255, 255, 1);
+$black: rgba(33, 63, 125, 1);
+$border-color: rgba(33, 63, 125, 0.1);
+
+// Status Colors
+$status-active-text: rgba(57, 205, 98, 1);
+$status-active-bg: rgba(57, 205, 98, 0.06);
+$status-inactive-text: rgba(84, 95, 125, 1);
+$status-inactive-bg: rgba(84, 95, 125, 0.06);
+$status-pending-text: rgba(233, 178, 0, 1);
+$status-pending-bg: rgba(233, 178, 0, 0.06);
+$status-blacklisted-text: rgba(228, 3, 59, 1);
+$status-blacklisted-bg: rgba(228, 3, 59, 0.06);
+
+// Typography
+$font-primary: 'Work Sans', sans-serif;
+$font-secondary: 'Avenir Next', sans-serif;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1200px;

@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'variables';
+
+:root {
+  --background: #{$white};
+  --foreground: #{$text-color-main};
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: $font-primary;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
