@@ -1,0 +1,30 @@
+@use "./variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 16px;
+  text-align: center;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  color: $text-color-dark;
+  font-family: $font-avenir;
+}
+
+.message {
+  font-size: 16px;
+  color: $text-color-main;
+  max-width: 380px;
+}
+
+.cta {
+  margin-top: 8px;
+  width: auto;
+  padding: 14px 32px;
+}

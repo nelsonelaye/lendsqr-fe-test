@@ -1,0 +1,50 @@
+@use "@/styles/variables" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  gap: 24px;
+  text-align: center;
+}
+
+.icon {
+  opacity: 0.6;
+  color: $primary-color;
+}
+
+.heading {
+  font-size: 96px;
+  font-weight: 700;
+  color: $text-color-dark;
+  line-height: 1;
+  margin: 0;
+  font-family: $font-avenir;
+}
+
+.message {
+  font-size: 20px;
+  color: $text-color-main;
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+.back-link {
+  background-color: $primary-color;
+  color: $white;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: $font-avenir;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

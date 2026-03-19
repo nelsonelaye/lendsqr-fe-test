@@ -2,8 +2,10 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Layout from "../layouts/Dashboard/DashboardLayout";
+import Link from "next/link";
+import Button from "@/components/Button/Button";
+import styles from "@/styles/home.module.scss";
 
 export default function Home() {
   const router = useRouter();
@@ -20,14 +22,16 @@ export default function Home() {
 
   return (
     <Layout>
-      <div>
-        <Image
-          src="/images/lendsqr-logo.svg"
-          alt="Lendsqr logo"
-          width={150}
-          height={40}
-          priority
-        />
+      <div className={styles.container}>
+        <h1 className={styles.heading}>Nothing to see here</h1>
+        <p className={styles.message}>
+          This is the dashboard home. Head over to the Users page to get started.
+        </p>
+        <Link href="/users">
+          <Button variant="primary" className={styles.cta}>
+            View Users
+          </Button>
+        </Link>
       </div>
     </Layout>
   );
