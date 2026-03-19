@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import 'variables';
+@use 'variables' as *;
+@import url("./fonts.scss");
+
 
 :root {
-  --background: #{$white};
-  --foreground: #{$text-color-main};
+  --background: $white;
+  --foreground: $text-color-main;
 }
 
 * {
@@ -24,11 +25,20 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: $font-primary;
 }
 
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: $text-color-main;
+  -webkit-box-shadow: 0 0 0px 1000px $white inset;
+  transition: background-color 5000s ease-in-out 0s;
 }

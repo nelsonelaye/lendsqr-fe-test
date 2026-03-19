@@ -1,0 +1,40 @@
+@use "../../styles/variables" as *;
+
+
+.form-input {
+  border: 2px solid rgba($text-color-main, 0.15);
+  border-radius: 5px;
+  width: 100%;
+//   margin: 5px 0px 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  font-family: $font-avenir;
+
+  input {
+    border: 0px;
+    outline: 0;
+    width: 100%;
+    padding: 16px 0;
+    background: transparent;
+    color: $text-color-main;
+    font-family: inherit;
+    font-size: 14px;
+    &::placeholder {
+      color: $text-color-main ;
+      opacity: 0.6;
+    }
+  }
+
+  .suffix-text {
+    color: $primary-color;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 10%;
+    cursor: pointer;
+  }
+}

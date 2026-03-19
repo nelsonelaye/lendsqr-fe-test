@@ -1,0 +1,67 @@
+@use "../../styles/variables" as *;
+
+.btn {
+  font-family: $font-avenir;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 10%;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 8px;
+  padding: 14px 24px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn--primary {
+  background: $primary-color;
+  color: $white;
+  border: 1px solid $primary-color;
+  width: 100%;
+
+  &:hover {
+    background: darken($primary-color, 5%);
+    border-color: darken($primary-color, 5%);
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  color: $primary-color;
+  border: 1px solid $primary-color;
+
+  &:hover {
+    background: rgba($primary-color, 0.05);
+  }
+}
+
+.btn--blacklist {
+  background: transparent;
+  color: $status-blacklisted-text;
+  border: 1px solid $status-blacklisted-text;
+
+  &:hover {
+    background: $status-blacklisted-bg;
+  }
+}
+
+.btn--activate {
+  background: transparent;
+  color: $status-active-text;
+  border: 1px solid $status-active-text;
+
+  &:hover {
+    background: $status-active-bg;
+  }
+}
