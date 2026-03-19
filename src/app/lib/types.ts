@@ -23,4 +23,5 @@ export interface NaviagtionInterface {
   title: string;
   link?: string;
   suffixIcon?: JSX.Element;
+  onClickAction?: () => void;
 }

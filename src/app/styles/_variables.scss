@@ -20,8 +20,9 @@ $status-blacklisted-text: rgba(228, 3, 59, 1);
 $status-blacklisted-bg: rgba(228, 3, 59, 0.06);
 
 // Typography
-$font-work-sans: 'Work Sans', sans-serif;
+$font-work-sans: var(--font-work-sans), sans-serif;
 $font-avenir: 'Avenir Next', sans-serif;
+$font-roboto: var(--font-roboto), sans-serif;
 
 // Breakpoints
 $bp-mobile: 480px;

@@ -2,16 +2,19 @@
 
 .navbar-container {
   padding:0px 30px;
+  padding-right: 60px;
   position: fixed;
   width: 100%;
-  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 10;
   height: 100px;
+  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+
 }
+
 
 .search-bar {
   background: #ffffff;
@@ -23,17 +26,26 @@
   overflow: hidden;
   width: 400px;
   height: 40px;
+  margin-right: auto;
+  margin-left: 168px;
 
   input {
     border: 0;
     outline: none;
     padding: 12px 20px;
-    opacity: 0.2;
+    width: 100%;
+    font-size: 14px;
 
-    ::placeholder {
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &::placeholder {
       font-weight: 400;
       font-size: 14px;
       color: $text-color-main;
+      opacity: 0.6;
     }
   }
 
@@ -55,14 +67,16 @@
 
   .docs {
     text-decoration: underline;
-    font-family: "Roboto", sans-serif;
-    margin-right: 10px;
+    font-family: $font-roboto;
+    margin-right: 37px;
     cursor: pointer;
   }
 
   .bell {
-    margin: 0 10px;
+    margin-right:  20px;
     font-size: 24px;
+    cursor: pointer;
+
   }
 
   .profile-photo {
@@ -74,6 +88,8 @@
 
   .profile-name {
     font-weight: 500;
+    margin-right: 4px;
+    text-transform: capitalize;
   }
 }
 

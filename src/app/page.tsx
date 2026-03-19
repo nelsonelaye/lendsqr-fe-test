@@ -20,24 +20,14 @@ export default function Home() {
 
   return (
     <Layout>
-      <div
-        style={{
-          display: "flex",
-          height: "100vh",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#fbfbfb",
-        }}
-      >
-        <main>
-          <Image
-            src="/images/lendsqr-logo.svg"
-            alt="Lendsqr logo"
-            width={150}
-            height={150}
-            priority
-          />
-        </main>
+      <div>
+        <Image
+          src="/images/lendsqr-logo.svg"
+          alt="Lendsqr logo"
+          width={150}
+          height={40}
+          priority
+        />
       </div>
     </Layout>
   );

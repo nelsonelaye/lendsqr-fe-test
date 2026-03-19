@@ -6,9 +6,18 @@ export const metadata: Metadata = {
   description: "Lendsqr | Empowering the smartest lenders",
 };
 
-import { Work_Sans } from "next/font/google";
+import { Work_Sans, Roboto } from "next/font/google";
 
-const workSans = Work_Sans({ subsets: ["latin"] });
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+});
 
 export default function RootLayout({
   children,
@@ -21,7 +30,9 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
-      <body className={workSans.className}>{children}</body>
+      <body className={`${workSans.variable} ${roboto.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }

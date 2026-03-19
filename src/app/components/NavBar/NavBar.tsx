@@ -1,10 +1,20 @@
+"use client";
 import styles from "./NavBar.module.scss";
-import { AiOutlineBell } from "react-icons/ai";
 import { HiOutlineSearch } from "react-icons/hi";
 import { AiFillCaretDown } from "react-icons/ai";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavBar = () => {
+  const auth = JSON.parse(
+    typeof window !== "undefined" ? localStorage.getItem("auth") || "{}" : "{}"
+  );
+
+  // for tht sake of this assessment, I'll extract username from email in localstorage
+  const displayName = auth.email
+    ?.split("@")[0]
+    .replace(/[._+-]/g, " ") ?? "User";
+
   return (
     <div className={styles["navbar-container"]}>
       <Image src="/images/lendsqr-logo.svg" alt="Lensqr" width={144} height={30} />
@@ -17,11 +27,13 @@ const NavBar = () => {
       </div>
 
       <div className={styles["extras"]}>
-        <span className={styles["docs"]}>Docs</span>
-        <AiOutlineBell className={styles["bell"]} />
+        <Link href="https://docs.lendsqr.com/" target="_blank" className={styles["docs"]}>Docs</Link>
+        <Image src="/svgs/notification.svg" alt="notification" className={styles["bell"]} width={26} height={26} />
         <Image src="/images/adedeji.png" alt="user" className={styles["profile-photo"]} width={48} height={60} />
-        <span className={styles["profile-name"]}>Adedeji</span>
-        <AiFillCaretDown style={{ cursor: "pointer" }} />
+        <div>
+          <span className={styles["profile-name"]}>{displayName}</span>
+          <AiFillCaretDown style={{ cursor: "pointer" }} size={20} />
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,38 @@
+@use "../../styles/variables" as *;
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 30px;
+  margin: 5px 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-left 0.15s ease;
+  opacity: 0.6;
+  color: $secondary-color;
+  border-left: 3px solid transparent;
+
+
+  img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    background-color: rgba($primary-color, 0.03);
+  }
+}
+
+.nav-link--active {
+  background-color: rgba($primary-color, 0.06);
+  border-left: 3px solid $primary-color;
+  opacity: 1;
+}

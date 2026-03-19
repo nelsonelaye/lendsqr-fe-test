@@ -2,33 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "./NavBarItem.module.scss";
+import styles from "./SideBarItem.module.scss";
 import { NaviagtionInterface } from "@/app/lib/types";
 import Image from "next/image";
-import { useMemo } from "react";
 
-const NavBarItem = ({ imageSrc, title, link, suffixIcon }: NaviagtionInterface) => {
+const SideBarItem = ({ imageSrc, title, link, suffixIcon, onClickAction }: NaviagtionInterface) => {
   const pathname = usePathname();
   const isActive = link ? pathname === link : false;
 
-    const activeStyle = useMemo(() => {
-      return isActive
-    ? { backgroundColor: "#39cdcc0f", borderLeft: "3px solid #39CDCC" }
-    : {};
-  }, [isActive])
+  const linkClass = `${styles["nav-link"]} ${isActive ? styles["nav-link--active"] : ""}`;
 
   return (
     <>
       {link ? (
         <div>
-          <Link href={link} className={styles["nav-link"]} style={activeStyle}>
+          <Link href={link} className={linkClass}>
             <Image src={imageSrc} alt={title} width={16} height={16} />
             <span>{title}</span>
             {suffixIcon && <span>{suffixIcon}</span>}
           </Link>
         </div>
       ) : (
-        <div className={styles["nav-link"]}>
+        <div className={styles["nav-link"]} style={{ opacity: 1 }} onClick={onClickAction}>
           <Image src={imageSrc} alt={title} width={16} height={16} />
           <span>{title}</span>
           {suffixIcon && <span>{suffixIcon}</span>}
@@ -38,4 +33,4 @@ const NavBarItem = ({ imageSrc, title, link, suffixIcon }: NaviagtionInterface) 
   );
 };
 
-export default NavBarItem;
+export default SideBarItem;
