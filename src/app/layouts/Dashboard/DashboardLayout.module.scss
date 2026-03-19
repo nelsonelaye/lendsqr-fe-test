@@ -1,0 +1,19 @@
+@use "../../styles/variables" as *;
+
+.layout-container {
+  display: flex;
+  background-color: $background-dark;
+}
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  padding: 160px 60px 60px 300px;
+  background-color: $background-dark;
+}
+
+@media screen and (max-width: $bp-tablet) {
+  main {
+    padding: 130px 25px 60px;
+  }
+}

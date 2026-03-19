@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import { validationSchema } from "@/app/lib/schema";
+import { useMemo } from "react";
 
 const Login = () => {
   const router = useRouter();
@@ -26,7 +27,9 @@ const Login = () => {
     },
   });
 
-  const isFormValid = formik.isValid && formik.dirty;
+    const isFormValid = useMemo(() => {
+      return formik.isValid && formik.dirty;
+    }, [formik.isValid, formik.dirty]);
 
   return (
     <div className={styles["login-container"]}>

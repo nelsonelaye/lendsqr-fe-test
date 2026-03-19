@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Layout from "./layouts/Dashboard/DashboardLayout";
 
 export default function Home() {
   const router = useRouter();
@@ -18,24 +19,26 @@ export default function Home() {
   }, [router]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#fbfbfb",
-      }}
-    >
-      <main>
-        <Image
-          src="/images/lendsqr-logo.svg"
-          alt="Lendsqr logo"
-          width={150}
-          height={150}
-          priority
-        />
-      </main>
-    </div>
+    <Layout>
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#fbfbfb",
+        }}
+      >
+        <main>
+          <Image
+            src="/images/lendsqr-logo.svg"
+            alt="Lendsqr logo"
+            width={150}
+            height={150}
+            priority
+          />
+        </main>
+      </div>
+    </Layout>
   );
 }

@@ -1,0 +1,54 @@
+@use "../../styles/variables" as *;
+
+.sidebar-container {
+  background: #ffffff;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  padding: 130px 0 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $secondary-color;
+  //   min-height: 100vh;
+  height: 100vh;
+  white-space: nowrap;
+  position: fixed;
+  top: 0;
+  overflow-y: auto;
+}
+
+.sidebar-container::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-group-title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $primary-color;
+  text-transform: uppercase;
+  padding: 0 30px;
+  margin: 10px 0;
+}
+
+.logout-section {
+  border-top: 1px solid rgba($secondary-color, 0.1);
+  padding-top: 10px;
+  margin-top: 80px;
+}
+
+.app-version {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: $secondary-color;
+  margin-top: 30px;
+  display: block;
+  padding-left: 30px;
+}
+
+@media screen and (max-width: $bp-tablet) {
+  .sidebar-container {
+    display: none;
+  }
+}
