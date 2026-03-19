@@ -8,11 +8,11 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // in a production app, this would be handled securely and instantly using a middleware
+    // in a production app, this would be handled securely using middleware
     // but for this test, we'll use localStorage to check for authentication
-    const isAuthorized = localStorage.getItem("isAuthenticated") === "true";
+    const auth = JSON.parse(localStorage.getItem("auth") || "{}");
 
-    if (!isAuthorized) {
+    if (!auth.isAuthenticated) {
       router.push("/login");
     }
   }, [router]);

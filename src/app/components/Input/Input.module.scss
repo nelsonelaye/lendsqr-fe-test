@@ -1,21 +1,39 @@
 @use "../../styles/variables" as *;
 
+.form-input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+.error-text {
+  display: block;
+  color: red;
+  font-family: $font-avenir;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+}
+
 
 .form-input {
   border: 2px solid rgba($text-color-main, 0.15);
   border-radius: 5px;
   width: 100%;
-//   margin: 5px 0px 20px;
   display: flex;
   align-items: center;
   padding: 0 16px;
   font-family: $font-avenir;
+  height: 50px;
 
   input {
     border: 0px;
     outline: 0;
     width: 100%;
-    padding: 16px 0;
+    height: 100%;
     background: transparent;
     color: $text-color-main;
     font-family: inherit;
@@ -37,4 +55,8 @@
     letter-spacing: 10%;
     cursor: pointer;
   }
+}
+
+.form-input--error {
+  border-color: red !important;
 }

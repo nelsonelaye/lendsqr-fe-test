@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../../styles/variables" as *;
 
 .login-container {
   display: grid;
@@ -16,6 +16,7 @@
   background-color: white;
 }
 
+
 .content-hold {
   display: flex;
   flex-direction: column;
@@ -23,6 +24,7 @@
   height: 100%;
   margin: auto;
   width: 80%;
+
 
   h1 {
     font-style: normal;
@@ -87,4 +89,16 @@
   .side-illustration {
     display: none;
   }
+}
+
+@media screen and (min-width: $bp-tablet) {
+  // .side-form {
+
+
+  //   .content-hold {
+  //     margin: 0px !important;
+  //   }
+  // }
+
+
 }

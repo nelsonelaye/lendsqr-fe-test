@@ -9,10 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "and": "^0.0.3",
+    "formik": "^2.4.9",
     "next": "16.1.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "sass": "^1.98.0"
+    "sass": "^1.98.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@types/node": "^20",

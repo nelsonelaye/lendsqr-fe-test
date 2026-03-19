@@ -10,5 +10,6 @@ export interface FormInputInterface
   placeholder: string;
   suffiX?: string;
   label?: string;
-  children?: any;
+  error?: string;
+  children?: React.ReactNode;
 }

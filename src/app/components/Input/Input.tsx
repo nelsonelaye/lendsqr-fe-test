@@ -3,7 +3,14 @@ import { useState } from "react";
 import styles from "./Input.module.scss";
 import { FormInputInterface } from "@/app/lib/types";
 
-const FormInput = ({ placeholder, name, type, label }: FormInputInterface) => {
+const FormInput = ({
+  placeholder,
+  name,
+  type,
+  label,
+  error,
+  ...props
+}: FormInputInterface) => {
   const [passwordType, setPasswordType] = useState("password");
 
   const controlPasswordView = () => {
@@ -15,21 +22,25 @@ const FormInput = ({ placeholder, name, type, label }: FormInputInterface) => {
   };
 
   return (
-    <>
-      <div className={styles["form-input"]}>
+    <div className={styles["form-input-wrapper"]}>
+      <div
+        className={`${styles["form-input"]} ${error && styles["form-input--error"]}`}
+      >
         <input
           placeholder={placeholder}
           id={name}
           name={name}
           type={type === "password" ? passwordType : type}
+          {...props}
         />
         {type === "password" && (
           <span className={styles["suffix-text"]} onClick={controlPasswordView}>
-            show
+            {passwordType === "password" ? "show" : "hide"}
           </span>
         )}
       </div>
-    </>
+      {error && <span className={styles["error-text"]}>{error}</span>}
+    </div>
   );
 };
 
