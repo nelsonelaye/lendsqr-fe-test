@@ -1,4 +1,4 @@
-import { ButtonInterface } from "@/app/lib/types";
+import { ButtonInterface } from "@/lib/types";
 import styles from "./Button.module.scss";
 
 const Button = ({ children, variant, className = '', ...props }: ButtonInterface) => {

@@ -1,11 +1,11 @@
 "use client"
-import Button from "@/app/components/Button/Button";
-import FormInput from "@/app/components/Input/Input";
+import Button from "@/components/Button/Button";
+import FormInput from "@/components/Input/Input";
 import styles from "./login.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
-import { validationSchema } from "@/app/lib/schema";
+import { validationSchema } from "@/lib/schema";
 import { useMemo } from "react";
 
 const Login = () => {

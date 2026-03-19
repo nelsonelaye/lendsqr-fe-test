@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import styles from "./Input.module.scss";
-import { FormInputInterface } from "@/app/lib/types";
+import { FormInputInterface } from "@/lib/types";
 
 const FormInput = ({
   placeholder,

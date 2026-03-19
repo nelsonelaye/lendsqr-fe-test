@@ -3,7 +3,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Layout from "../layouts/Dashboard/DashboardLayout";
+import Layout from "@/layouts/Dashboard/DashboardLayout";
+
 
 export default function Home() {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import { NaviagtionInterface } from "@/app/lib/types";
+import { NaviagtionInterface } from "@/lib/types";
 
 export const customerNavigations: Array<NaviagtionInterface> = [
   { title: "Users", imageSrc: "/svgs/users.svg", link: "/users" },

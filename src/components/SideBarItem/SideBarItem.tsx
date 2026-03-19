@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./SideBarItem.module.scss";
-import { NaviagtionInterface } from "@/app/lib/types";
+import { NaviagtionInterface } from "@/lib/types";
 import Image from "next/image";
 
 const SideBarItem = ({ imageSrc, title, link, suffixIcon, onClickAction }: NaviagtionInterface) => {
