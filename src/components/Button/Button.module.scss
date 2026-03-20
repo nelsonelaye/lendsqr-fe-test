@@ -66,3 +66,12 @@
     background: $status-active-bg;
   }
 }
+
+
+@media screen and (max-width: $bp-tablet) {
+.btn {
+  font-size: 12px !important;
+  height: 40px !important;
+}
+
+}

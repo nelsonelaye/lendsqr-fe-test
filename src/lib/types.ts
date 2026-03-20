@@ -83,3 +83,9 @@ export interface UserDetailsInterface extends UserRecord {
     relationship: string;
   }>;
 }
+
+
+export interface UserDataInterface {
+  title: string;
+  value: string;
+}

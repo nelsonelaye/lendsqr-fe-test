@@ -77,6 +77,7 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 51px;
   flex-wrap: wrap;
 }
@@ -194,21 +195,41 @@ gap:30px;
 
 
 @media screen and (max-width: $bp-tablet) {
+    .profile-photo {
+  width: 70px !important;
+  height: 70px !important;
+
+}
   .active-btns {
     margin-left: 0;
     margin-top: 8px;
   }
 
-  .highlight {
-    justify-content: center;
-    text-align: center;
+  .navigate-back {
+    font-size: 14px;
+  }
+
+  .page-header {
+    h2 {
+      font-size: 20px !important;  
+    }
   }
 
   .tier {
     border: none;
-    border-top: 1px solid rgba($text-color-main, 0.2);
-    border-bottom: 1px solid rgba($text-color-main, 0.2);
-    padding: 16px 0;
-    align-items: center;
   }
+}
+
+
+@media screen and (max-width: $bp-mobile) {
+          .highlight {
+   flex-direction: column;
+   text-align: center;
+   gap: 30px;
+  }
+
+  .ratings {
+    margin: auto;
+  }
+
 }
