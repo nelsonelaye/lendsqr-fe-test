@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchAllUsers, fetchUsers } from "@/lib/api";
 import UserMenu from "@/components/UserMenu/UserMenu";
 import Pagination from "@/components/Pagination/Pagination";
+import TableSkeleton from "@/components/TableSkeleton/TableSkeleton";
 
 
 
@@ -101,17 +102,17 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {isLoading && <Loader color="#545F7D" style={{ margin: "auto" }} />} */}
-            {(users?.data?.length ?? 0) > 0 &&
+            {isLoading ? (
+              <TableSkeleton rows={10} />
+            ) : (
               users?.data?.map((user: UserDetailsInterface) => (
                 <tr key={user.id}>
                   <td>{user?.organization}</td>
                   <td>{user?.username}</td>
-
                   <td>{user?.email}</td>
                   <td>{user?.phoneNumber}</td>
                   <td>
-                    {dayjs(user?.createdAt).format("MMM DD, YYYY HH:MM A")}{" "}
+                    {dayjs(user?.createdAt).format("MMM DD, YYYY HH:MM A")}
                   </td>
                   <td>
                     <div
@@ -124,7 +125,8 @@ const Users = () => {
                     <UserMenu userId={user.id} />
                   </td>
                 </tr>
-              ))}
+              ))
+            )}
           </tbody>
         </table>
       </div>

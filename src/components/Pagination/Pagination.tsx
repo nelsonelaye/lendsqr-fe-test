@@ -44,7 +44,7 @@ export default function Pagination({
 
   return (
     <div className={styles.pagination}>
-      {/* Left — "Showing X out of Y" */}
+
       <div className={styles.tracker}>
         <span>Showing</span>
         <div className={styles.sizeSelect}>

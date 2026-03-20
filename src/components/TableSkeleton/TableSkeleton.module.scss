@@ -1,0 +1,25 @@
+@use "@/styles/variables" as *;
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+.row td {
+  padding: 23px 0;
+  border-bottom: 1px solid rgba($text-color-main, 0.1);
+}
+
+.bone {
+  display: block;
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba($text-color-main, 0.08) 25%,
+    rgba($text-color-main, 0.15) 50%,
+    rgba($text-color-main, 0.08) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
