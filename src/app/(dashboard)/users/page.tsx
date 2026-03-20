@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import styles from "./users.module.scss";
 import { MdFilterList } from "react-icons/md";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
 import dayjs from "dayjs";
 import { StatsCardInterface, UserDetailsInterface } from "@/lib/types";
 import StatsCard from "@/components/StatsCard/StatsCard";
@@ -104,6 +105,17 @@ const Users = () => {
           <tbody>
             {isLoading ? (
               <TableSkeleton rows={10} />
+            ) : (users?.data?.length ?? 0) === 0 ? (
+              <tr
+                style={{
+                  height: "400px",
+                }}
+              >
+                <td colSpan={7} className={styles["empty-state"]}>
+                  <HiOutlineDocumentSearch size={56} />
+                  <p>No users found</p>
+                </td>
+              </tr>
             ) : (
               users?.data?.map((user: UserDetailsInterface) => (
                 <tr key={user.id}>

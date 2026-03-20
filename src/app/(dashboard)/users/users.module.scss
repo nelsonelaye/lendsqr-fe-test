@@ -86,6 +86,22 @@
       top: 10px;
     }
   }
+  .empty-state {
+    text-align: center;
+    padding: 60px 0 !important;
+    border-bottom: none !important;
+    color: $text-color-main;
+
+    span {
+      font-size: 32px;
+    }
+
+    p {
+      margin-top: 12px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+  }
 }
 
 .status {
