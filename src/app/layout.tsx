@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 import { Work_Sans, Roboto } from "next/font/google";
 import Providers from "@/components/Providers/Providers";
+import { Toaster } from "sonner";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export default function RootLayout({
       </head>
       <body className={`${workSans.variable} ${roboto.variable}`}>
         <Providers>
+          <Toaster position="top-right" duration={4000} richColors />
           {children}
         </Providers>
       </body>

@@ -24,21 +24,17 @@ const TAB_LABELS = [
 ];
 
 const UserDetails = () => {
-    const { id } = useParams<{ id: string }>();
-
+  const { id } = useParams<{ id: string }>();
 
   const { data: user, isLoading } = useQuery({
     queryKey: ["user", id],
     queryFn: () => fetchUserById(id),
     enabled: !!id,
   });
-    
-    // console.log(user)
 
   return (
     <div>
       <Link href="/users" className={styles["navigate-back"]}>
-        {/* <HiOutlineArrowLongLeft style={{ marginRight: "10px" }} /> */}
         <Image
           src="/svgs/arrow-back.svg"
           alt="Back to Users"
@@ -74,14 +70,12 @@ const UserDetails = () => {
         </div>
       </div>
 
-      {/* Single Tabs.Root wraps both the list (in the header card) and content panels */}
       <Tabs.Root defaultValue="general">
         <div className={styles["top-details"]}>
-          {/* Profile highlight row */}
+          {/* skeleton loader for profile highlights */}
           <div className={styles["highlight"]}>
             {isLoading ? (
               <>
-                {/* Avatar */}
                 <span className={styles["skeleton-avatar"]} />
 
                 {/* Name + ID */}

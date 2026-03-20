@@ -1,14 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import styles from "./NavBar.module.scss";
 import { HiOutlineSearch } from "react-icons/hi";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
-import { RiLogoutBoxLine } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
+import AvatarMenu from "@/components/AvatarMenu/AvatarMenu";
 
 interface NavBarProps {
   onMenuToggle?: () => void;
@@ -17,22 +15,12 @@ interface NavBarProps {
 
 const NavBar = ({ onMenuToggle, isOpen }: NavBarProps) => {
   const [displayName, setDisplayName] = useState<string | null>(null);
-  const [email, setEmail] = useState<string | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth") || "{}");
-    setEmail(auth.email ?? null);
-    const name = auth.email
-      ?.split("@")[0]
-      .replace(/[._+-]/g, " ") ?? "User";
+    const name = auth.email?.split("@")[0].replace(/[._+-]/g, " ") ?? "User";
     setDisplayName(name);
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("auth");
-    router.push("/login");
-  };
 
   return (
     <div className={styles["navbar-container"]}>
@@ -68,33 +56,7 @@ const NavBar = ({ onMenuToggle, isOpen }: NavBarProps) => {
 
         <Image src="/images/adedeji.png" alt="user" className={styles["profile-photo"]} width={48} height={60} />
 
-        {/* Profile dropdown */}
-        <DropdownMenu.Root>
-          <DropdownMenu.Trigger asChild>
-            <div className={styles["profile-info"]} role="button" aria-label="Profile menu">
-              <span className={styles["profile-name"]}>
-                {displayName ?? <span style={{ visibility: "hidden" }}>——</span>}
-              </span>
-              <Image src="/svgs/dropdown.svg" alt="dropdown" className={styles["dropdown"]} width={10} height={10} />
-            </div>
-          </DropdownMenu.Trigger>
-
-          <DropdownMenu.Portal>
-            <DropdownMenu.Content className={styles["profile-dropdown"]} sideOffset={12} align="end">
-              <p className={styles["dropdown-email"]}>{email}</p>
-
-              <DropdownMenu.Separator className={styles["dropdown-separator"]} />
-
-              <DropdownMenu.Item
-                className={styles["dropdown-item"]}
-                onSelect={handleLogout}
-              >
-                <RiLogoutBoxLine size={15} />
-                Logout
-              </DropdownMenu.Item>
-            </DropdownMenu.Content>
-          </DropdownMenu.Portal>
-        </DropdownMenu.Root>
+        <AvatarMenu />
       </div>
     </div>
   );
