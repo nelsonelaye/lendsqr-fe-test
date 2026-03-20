@@ -1,0 +1,45 @@
+@use "@/styles/shimmer" as *;
+@use "@/styles/variables" as *;
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($text-color-main, 0.08);
+  margin-bottom: 0;
+
+  &:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  @include bone(14px, 160px);
+  margin: 30px 0 20px;
+}
+
+.label {
+  @include bone(11px, 75%);
+}
+
+.value {
+  @include bone(16px, 55%);
+}
+
+.value--wide {
+  @include bone(16px, 88%);
+}
+
+@media screen and (max-width: $bp-tablet) {
+  .section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

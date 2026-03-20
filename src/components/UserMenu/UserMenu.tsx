@@ -6,6 +6,7 @@ import { BsEye } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./UserMenu.module.scss";
+import { toast } from "sonner";
 
 interface UserMenuProps {
   userId: string;
@@ -33,23 +34,19 @@ const UserMenu = ({ userId }: UserMenuProps) => {
             </Link>
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className={styles.item}>
-            <Image
-              src="/svgs/user-delete.svg"
-              alt="user-delete"
-              width={14}
-              height={14}
-            />
+          <DropdownMenu.Item
+            className={styles.item}
+            onSelect={() => toast.info("Blacklist feature coming soon", { description: "This action is not available yet." })}
+          >
+            <Image src="/svgs/user-delete.svg" alt="user-delete" width={14} height={14} />
             Blacklist User
           </DropdownMenu.Item>
 
-          <DropdownMenu.Item className={styles.item}>
-            <Image
-              src="/svgs/user-add.svg"
-              alt="user-add"
-              width={14}
-              height={14}
-            />
+          <DropdownMenu.Item
+            className={styles.item}
+            onSelect={() => toast.info("Activate feature coming soon", { description: "This action is not available yet." })}
+          >
+            <Image src="/svgs/user-add.svg" alt="user-add" width={14} height={14} />
             Activate User
           </DropdownMenu.Item>
         </DropdownMenu.Content>

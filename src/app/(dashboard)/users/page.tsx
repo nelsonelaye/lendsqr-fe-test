@@ -14,8 +14,6 @@ import Pagination from "@/components/Pagination/Pagination";
 import TableSkeleton from "@/components/TableSkeleton/TableSkeleton";
 
 
-
-
 export const tableTitles = [
   "organization",
   "username",

@@ -1,0 +1,22 @@
+@use "@/styles/variables" as *;
+
+// shared shimmer mixin for skeleton stylesheet
+@mixin bone($height: 14px, $width: 100%) {
+  display: block;
+  height: $height;
+  width: $width;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    rgba($text-color-main, 0.08) 25%,
+    rgba($text-color-main, 0.15) 50%,
+    rgba($text-color-main, 0.08) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}

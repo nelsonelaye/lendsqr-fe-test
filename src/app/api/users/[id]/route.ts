@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  // In Next.js 15+, params is a Promise and must be awaited
+  const { id } = await params;
+
   const apiUrl = process.env.API_URL;
   const token = process.env.JSON_GENERATOR_TOKEN;
 
@@ -32,9 +35,8 @@ export async function GET(
 
     const data = await response.json();
 
-    // Find the user by id field
     const user = Array.isArray(data)
-      ? data.find((u: { id: string }) => u.id === params.id)
+      ? data.find((u: { id: string }) => u.id === id)
       : null;
 
     if (!user) {
@@ -43,7 +45,7 @@ export async function GET(
 
     return NextResponse.json(user);
   } catch (error) {
-    console.error(`[GET /api/users/${params.id}]`, error);
+    console.error(`[GET /api/users/${id}]`, error);
     return NextResponse.json(
       { error: "Failed to fetch user" },
       { status: 500 }

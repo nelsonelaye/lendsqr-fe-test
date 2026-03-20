@@ -1,0 +1,48 @@
+@use "@/styles/variables" as *;
+
+.category-title {
+  font-weight: 500;
+  font-size: 16px;
+  color: $secondary-color;
+  margin: 30px 0;
+}
+
+.category-details {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba($secondary-color, 0.1);
+}
+
+.category-details:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: $text-color-main;
+}
+
+.detail-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: $text-color-main;
+  text-transform: capitalize;
+  word-break: break-word;
+}
+
+@media screen and (max-width: $bp-tablet) {
+  .category-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

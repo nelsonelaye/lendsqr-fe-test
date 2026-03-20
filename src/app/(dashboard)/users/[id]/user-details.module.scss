@@ -1,0 +1,214 @@
+@use "@/styles/shimmer" as *;
+@use "@/styles/variables" as *;
+
+// ── Highlight skeleton ─────────────────────────────────────
+.skeleton-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 100% !important;
+  @include bone(100px, 100px);
+  flex-shrink: 0;
+}
+
+.skeleton-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton-name   { @include bone(20px, 160px); }
+.skeleton-id     { @include bone(13px, 100px); }
+.skeleton-label  { @include bone(13px, 90px);  }
+.skeleton-stars  { @include bone(16px, 80px);  }
+.skeleton-amount { @include bone(20px, 140px); }
+.skeleton-bank   { @include bone(13px, 120px); }
+
+
+.navigate-back {
+  color: $text-color-main;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  transition: opacity 0.15s ease;
+
+  &:hover { opacity: 0.7; }
+}
+
+// Page header
+.page-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: $text-color-dark;
+    margin: 0;
+  }
+}
+
+.active-btns {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+// Top details card
+.top-details {
+  background: #ffffff;
+  border: 1px solid rgba($text-color-main, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  width: 100%;
+  padding: 30px 30px 0;
+  margin-bottom: 30px;
+}
+
+.highlight {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 51px;
+  flex-wrap: wrap;
+}
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba($secondary-color, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 600;
+  color: $secondary-color;
+  flex-shrink: 0;
+}
+
+.top-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.top-details-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: $text-color-dark;
+  margin: 0;
+ 
+}
+
+.username {
+  font-size: 14px;
+  font-weight: 400;
+  color: $text-color-main;
+}
+
+.bank-details {
+  font-size: 12px;
+  font-weight: 400;
+  color: $text-color-dark; 
+  margin-top: 4px;
+}
+
+.tier {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 30px;
+  border-left: 1px solid rgba($text-color-main, 0.2);
+  border-right: 1px solid rgba($text-color-main, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  color: $text-color-main;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #E9B200;
+}
+
+// Tabs
+.tab-root {
+  width: 100%;
+}
+
+.tab-list {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+gap:30px;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.tab-trigger {
+  flex: 1;
+  min-width: max-content;
+  padding: 0px 25px 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(0,0,0, 0.8);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    color: $text-color-main;
+  }
+
+  &[data-state="active"] {
+    color: $primary-color;
+    border-bottom-color: $primary-color;
+  }
+}
+
+// Tab Content
+.view-details {
+  background: #ffffff;
+  border: 1px solid rgba($text-color-main, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  width: 100%;
+  padding: 0 30px 30px;
+  margin-bottom: 24px;
+  min-height: 300px;
+}
+
+
+
+
+@media screen and (max-width: $bp-tablet) {
+  .active-btns {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .highlight {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tier {
+    border: none;
+    border-top: 1px solid rgba($text-color-main, 0.2);
+    border-bottom: 1px solid rgba($text-color-main, 0.2);
+    padding: 16px 0;
+    align-items: center;
+  }
+}

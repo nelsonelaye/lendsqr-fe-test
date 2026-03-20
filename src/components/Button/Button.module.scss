@@ -50,7 +50,7 @@
 .btn--blacklist {
   background: transparent;
   color: $status-blacklisted;
-  border: 1px solid $status-blacklisted-bg;
+  border: 1px solid $status-blacklisted;
 
   &:hover {
     background: $status-blacklisted-bg;
