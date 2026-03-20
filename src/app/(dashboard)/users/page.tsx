@@ -8,7 +8,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { StatsCardInterface, UserDetailsInterface } from "@/lib/types";
 import StatsCard from "@/components/StatsCard/StatsCard";
 import { useQuery } from "@tanstack/react-query";
-import { fetchUsers } from "@/lib/api";
+import { fetchAllUsers, fetchUsers } from "@/lib/api";
 import UserMenu from "@/components/UserMenu/UserMenu";
 
 
@@ -35,22 +35,39 @@ const Users = () => {
   const [isFIlter, setIsFilter] = useState(false);
 
 
-  const statsList: Array<StatsCardInterface> = useMemo(() => {
-     const list = [
-        { title: "users", icon: "/svgs/stats-users.svg", value: 2453 },
-        { title: "active users", icon: "/svgs/stats-active-user.svg", value: 2453 },
-        { title: "users with loans", icon: "/svgs/stats-loan.svg", value: 12453 },
-        { title: "users with savings", icon: "/svgs/stats-savings.svg", value: 102453 },
-     ];
-    
-    return list
-   }, [])
+  const { data: allUsers } = useQuery({
+    queryKey: ["users", "all"],
+    queryFn: fetchAllUsers,
+  });
 
-  
+  const statsList: Array<StatsCardInterface> = useMemo(() => {
+    const all = allUsers?.data ?? [];
+    const list = [
+      { title: "users", icon: "/svgs/stats-users.svg", value: allUsers?.total ?? 0 },
+      {
+        title: "active users",
+        icon: "/svgs/stats-active-user.svg",
+        value: all.filter((u) => u.status === "active").length,
+      },
+      {
+        title: "users with loans",
+        icon: "/svgs/stats-loan.svg",
+        value: all.filter((u) => (u.educationAndEmployment?.loanRepayment ?? 0) > 0).length,
+      },
+      {
+        title: "users with savings",
+        icon: "/svgs/stats-savings.svg",
+        value: all.filter((u) => (u.accountBalance ?? 0) > 0).length,
+      },
+    ];
+
+    return list;
+  }, [allUsers]);
+
   const { data: users, isLoading } = useQuery({
-    queryKey: ["users"],
-    queryFn: ()=>fetchUsers(offset, itemsPerPage),
-  })
+    queryKey: ["users", offset, itemsPerPage],
+    queryFn: () => fetchUsers(offset, itemsPerPage),
+  });
 
   console.log("users", users)
 

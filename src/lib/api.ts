@@ -6,6 +6,11 @@ export const fetchUsers = async (page = 1, size = 10) => {
   return res.data as { data: UserDetailsInterface[]; total: number };
 };
 
+export const fetchAllUsers = async () => {
+  const res = await axios.get("/api/users", { params: { page: 1, size: 9999 } });
+  return res.data as { data: UserDetailsInterface[]; total: number };
+};
+
 export const fetchUserById = async (id: string) => {
   const res = await axios.get(`/api/users/${id}`);
   return res.data as UserDetailsInterface;
