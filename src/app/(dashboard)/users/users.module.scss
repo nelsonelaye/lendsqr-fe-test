@@ -1,0 +1,113 @@
+@use "@/styles/variables" as *;
+
+.users-wrapper {
+ h2 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    color: $text-color-dark;
+
+ }
+}
+.stats-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 40px 0;
+  gap:26px;
+}
+
+.table-container {
+  background: #ffffff;
+  border: 1px solid rgba($text-color-main, 0.06);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+
+  border-radius: 4px;
+  padding: 30px;
+  margin-bottom: 20px;
+  overflow: auto;
+  width: 100%;
+  position: relative;
+  // padding: 0px 20px;
+
+  table {
+    width: 100%;
+    text-align: left;
+    color: $text-color-main;
+
+    th {
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 14px;
+      text-transform: uppercase;
+      padding-bottom: 15px;
+      white-space: nowrap;
+
+      span {
+        margin-right: 10px;
+      }
+    }
+
+    tbody tr:last-child {
+      border-bottom: 0px;
+    }
+
+    td {
+      font-weight: 400;
+      font-size: 14px;
+      padding: 23px 0;
+      border-bottom: 1px solid rgba($text-color-main, 0.1);
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+
+    td:nth-child(3) {
+      text-transform: lowercase;
+    }
+  }
+
+  .menu-dropdown {
+    padding: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: $text-color-main;
+
+    .dropdown {
+      z-index: 100;
+      position: absolute;
+      left: -1100px;
+      top: 10px;
+    }
+  }
+}
+
+.pagination-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.current {
+  border-radius: 4px;
+  background-color: rgba($secondary-color, 0.1);
+  color: $secondary-color;
+  padding: 7px 12px;
+  margin: 0px 10px;
+  display: flex;
+  align-items: center;
+}
+.pagination-tracker {
+  color: $primary-color;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: $bp-mobile) {
+    .stats-container {
+        flex-wrap: nowrap;
+    }
+}

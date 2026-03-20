@@ -25,7 +25,8 @@ export default function Home() {
       <div className={styles.container}>
         <h1 className={styles.heading}>Nothing to see here</h1>
         <p className={styles.message}>
-          This is the dashboard home. Head over to the Users page to get started.
+          This is the dashboard home. Head over to the Users page to get
+          started.
         </p>
         <Link href="/users">
           <Button variant="primary" className={styles.cta}>

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 import { Work_Sans, Roboto } from "next/font/google";
+import Providers from "@/components/Providers/Providers";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ const roboto = Roboto({
   weight: ["400", "500", "700"],
   variable: "--font-roboto",
 });
+
 
 export default function RootLayout({
   children,
@@ -31,7 +33,9 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className={`${workSans.variable} ${roboto.variable}`}>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

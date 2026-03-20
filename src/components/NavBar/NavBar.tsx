@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import styles from "./NavBar.module.scss";
 import { HiOutlineSearch } from "react-icons/hi";
 import { AiFillCaretDown } from "react-icons/ai";
@@ -6,14 +7,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const NavBar = () => {
-  const auth = JSON.parse(
-    typeof window !== "undefined" ? localStorage.getItem("auth") || "{}" : "{}"
-  );
+  const [displayName, setDisplayName] = useState<string | null>(null);
 
-  // for tht sake of this assessment, I'll extract username from email in localstorage
-  const displayName = auth.email
-    ?.split("@")[0]
-    .replace(/[._+-]/g, " ") ?? "User";
+  useEffect(() => {
+    const auth = JSON.parse(localStorage.getItem("auth") || "{}");
+    const name = auth.email
+      ?.split("@")[0]
+      .replace(/[._+-]/g, " ") ?? "User";
+    
+    setDisplayName(name);
+  }, []);
 
   return (
     <div className={styles["navbar-container"]}>
@@ -31,7 +34,9 @@ const NavBar = () => {
         <Image src="/svgs/notification.svg" alt="notification" className={styles["bell"]} width={26} height={26} />
         <Image src="/images/adedeji.png" alt="user" className={styles["profile-photo"]} width={48} height={60} />
         <div>
-          <span className={styles["profile-name"]}>{displayName}</span>
+          <span className={styles["profile-name"]}>
+            {displayName ?? <span style={{ visibility: "hidden" }}>——</span>}
+          </span>
           <AiFillCaretDown style={{ cursor: "pointer" }} size={20} />
         </div>
       </div>
