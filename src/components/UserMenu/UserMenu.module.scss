@@ -18,32 +18,36 @@
 .content {
   background: #ffffff;
   border-radius: 4px;
-  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba($text-color-main, 0.04);
+
   min-width: 160px;
   padding: 4px 0;
   z-index: 100;
-  animation: fadeIn 0.15s ease;
+  gap:20px;
 }
 
 .item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 10px 16px;
   font-size: 14px;
+  font-weight: 500;
   color: $text-color-main;
   cursor: pointer;
   text-decoration: none;
   outline: none;
 
+
+   & > svg {
+  color: $text-color-main;
+
+   }
   &:hover,
   &[data-highlighted] {
-    background-color: rgba($primary-color, 0.04);
+    background-color: rgba($secondary-color, 0.06);
     color: $secondary-color;
   }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}

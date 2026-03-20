@@ -58,30 +58,7 @@ const Users = () => {
     setIsFilter(!isFIlter);
   };
 
-  const handleFetchUsers = () => {
-    // setIsLoading(true);
-    // fetchAllUsers().then((res) => {
-    //   setIsLoading(false);
 
-    //   if (res.data !== undefined) {
-    //     setUsers(res.data);
-
-    //     setPageCount(Math.ceil(res.data.length / itemsPerPage));
-    //     setUserData(res?.data?.slice(offset, offset + itemsPerPage));
-    //     setOffset(offset + itemsPerPage);
-    //   }
-    // });
-  };
-
-  const handlePageClick = (selectedPage: any) => {
-    // (pageCount - 1) * itemsPerPage + 1
-    // setOffset((selectedPage * itemsPerPage) % users?.length);
-    handleFetchUsers();
-  };
-
-  useEffect(() => {
-    handleFetchUsers();
-  }, []);
   return (
     <div className={styles["users-wrapper"]}>
       <h2>Users</h2>
@@ -93,7 +70,7 @@ const Users = () => {
       <div className={styles["table-container"]}>
         {/* {isFIlter && <Filter onClick={handleFilterDisplay} />} */}
 
-      <table>
+        <table>
           <thead>
             <tr>
               {tableTitles?.map((item) => (
@@ -117,17 +94,19 @@ const Users = () => {
               users?.data?.map((user: UserDetailsInterface) => (
                 <tr key={user.id}>
                   <td>{user?.organization}</td>
-                  <td>
-                    {user?.username}
-                  </td>
-          
+                  <td>{user?.username}</td>
+
                   <td>{user?.email}</td>
                   <td>{user?.phoneNumber}</td>
                   <td>
                     {dayjs(user?.createdAt).format("MMM DD, YYYY HH:MM A")}{" "}
                   </td>
                   <td>
-                    <div className="status status--active">Active</div>
+                    <div
+                      className={`${styles.status} ${styles[`status--${user.status}`]}`}
+                    >
+                      {user.status}
+                    </div>
                   </td>
                   <td>
                     <UserMenu userId={user.id} />
@@ -135,7 +114,7 @@ const Users = () => {
                 </tr>
               ))}
           </tbody>
-        </table> 
+        </table>
       </div>
       <div className={styles["pagination-section"]}>
         <div className={styles["pagination-tracker"]}>
@@ -145,7 +124,7 @@ const Users = () => {
             <span style={{ marginRight: "10px" }}> {offset}</span>{" "}
             <IoIosArrowDown />
           </div>
-          {/* <span>out of {users.length}</span> */}
+          <span>out of {users?.data?.length}</span>
         </div>
         {/* <Pagination
           onChange={handlePageClick}

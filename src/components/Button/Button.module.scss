@@ -49,8 +49,8 @@
 
 .btn--blacklist {
   background: transparent;
-  color: $status-blacklisted-text;
-  border: 1px solid $status-blacklisted-text;
+  color: $status-blacklisted;
+  border: 1px solid $status-blacklisted-bg;
 
   &:hover {
     background: $status-blacklisted-bg;
@@ -59,8 +59,8 @@
 
 .btn--activate {
   background: transparent;
-  color: $status-active-text;
-  border: 1px solid $status-active-text;
+  color: $status-active;
+  border: 1px solid $status-active;
 
   &:hover {
     background: $status-active-bg;

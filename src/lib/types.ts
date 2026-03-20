@@ -73,6 +73,7 @@ export interface UserDetailsInterface extends UserRecord {
   socials: {
     twitter: string;
     instagram: string;
+    facebook: string;
   };
 
   guarantor: Array<{

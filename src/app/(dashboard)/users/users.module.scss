@@ -51,9 +51,6 @@
       }
     }
 
-    tbody tr:last-child {
-      border-bottom: 0px;
-    }
 
     td {
       font-weight: 400;
@@ -63,6 +60,12 @@
       text-transform: capitalize;
       white-space: nowrap;
     }
+
+
+    tbody tr:last-child td {
+      border-bottom: 0px;
+    }
+
 
     td:nth-child(3) {
       text-transform: lowercase;
@@ -84,6 +87,50 @@
     }
   }
 }
+
+.status {
+  height: 30px;
+  border-radius: 100px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  width: fit-content;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status--active {
+  background-color: rgba($status-active, 0.1);
+  color: $status-active;
+  width: 70px;
+
+}
+
+.status--inactive {
+  background-color: $status-inactive-bg;
+  color: $status-inactive;
+  width: 80px;
+
+}
+
+.status--pending {
+  background-color: $status-pending-bg;
+  color: $status-pending;
+  width: 90px;
+
+}
+
+
+.status--blacklisted {
+  background-color: $status-blacklisted-bg;
+  color: $status-blacklisted;
+    width: 100px;
+
+}
+
 
 .pagination-section {
   display: flex;

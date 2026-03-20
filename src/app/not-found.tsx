@@ -19,11 +19,8 @@ export default function NotFound() {
           </p>
         </div>
 
-              <Link href="/users" >
-                  <Button variant="primary">
-          Back to Dashboard
-                      
-                  </Button>
+        <Link href="/">
+          <Button variant="primary">Back to Dashboard</Button>
         </Link>
       </div>
     </Layout>

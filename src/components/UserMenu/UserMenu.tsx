@@ -21,7 +21,11 @@ const UserMenu = ({ userId }: UserMenuProps) => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className={styles.content} sideOffset={4} align="end">
+        <DropdownMenu.Content
+          className={styles.content}
+          sideOffset={4}
+          align="end"
+        >
           <DropdownMenu.Item className={styles.item} asChild>
             <Link href={`/users/${userId}`}>
               <BsEye size={14} />
@@ -30,12 +34,22 @@ const UserMenu = ({ userId }: UserMenuProps) => {
           </DropdownMenu.Item>
 
           <DropdownMenu.Item className={styles.item}>
-            <Image src="/svgs/user-times.svg" alt="" width={14} height={14} />
+            <Image
+              src="/svgs/user-delete.svg"
+              alt="user-delete"
+              width={14}
+              height={14}
+            />
             Blacklist User
           </DropdownMenu.Item>
 
           <DropdownMenu.Item className={styles.item}>
-            <Image src="/svgs/activate-user.svg" alt="" width={14} height={14} />
+            <Image
+              src="/svgs/user-add.svg"
+              alt="user-add"
+              width={14}
+              height={14}
+            />
             Activate User
           </DropdownMenu.Item>
         </DropdownMenu.Content>
