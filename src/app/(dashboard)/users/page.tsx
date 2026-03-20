@@ -1,15 +1,15 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "./users.module.scss";
 import { MdFilterList } from "react-icons/md";
 import dayjs from "dayjs";
-import { IoIosArrowDown } from "react-icons/io";
 import { StatsCardInterface, UserDetailsInterface } from "@/lib/types";
 import StatsCard from "@/components/StatsCard/StatsCard";
 import { useQuery } from "@tanstack/react-query";
 import { fetchAllUsers, fetchUsers } from "@/lib/api";
 import UserMenu from "@/components/UserMenu/UserMenu";
+import Pagination from "@/components/Pagination/Pagination";
 
 
 
@@ -25,13 +25,8 @@ export const tableTitles = [
 
 
 const Users = () => {
-  // const [users, setUsers] = useState<Array<UserDetailsInterface>>([]);
-  const [opened] = useState(true);
-  // const { fetchAllUsers } = useFetchUsers();
   const [offset, setOffset] = useState(1);
-  const [itemsPerPage] = useState(10);
-  const [pageCount, setPageCount] = useState(0);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
   const [isFIlter, setIsFilter] = useState(false);
 
 
@@ -133,35 +128,13 @@ const Users = () => {
           </tbody>
         </table>
       </div>
-      <div className={styles["pagination-section"]}>
-        <div className={styles["pagination-tracker"]}>
-          <span>Showing</span>
-
-          <div className={styles["current"]}>
-            <span style={{ marginRight: "10px" }}> {offset}</span>{" "}
-            <IoIosArrowDown />
-          </div>
-          <span>out of {users?.data?.length}</span>
-        </div>
-        {/* <Pagination
-          onChange={handlePageClick}
-          total={users.length / itemsPerPage}
-          position="right"
-          styles={(theme) => ({
-            control: {
-              background: "transparent",
-              fontWeight: 400,
-              color: "#545F7D",
-              border: "0px",
-              "&[data-active]": {
-                background: "transparent",
-                fontWeight: 500,
-                color: "#545F7D",
-              },
-            },
-          })}
-        /> */}
-      </div>
+      <Pagination
+        total={allUsers?.total ?? 0}
+        currentPage={offset}
+        pageSize={itemsPerPage}
+        onPageChange={setOffset}
+        onPageSizeChange={setItemsPerPage}
+      />
     </div>
   );
 };
