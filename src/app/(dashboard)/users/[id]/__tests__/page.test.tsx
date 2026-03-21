@@ -27,6 +27,7 @@ describe("User Details Page", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     queryClient.clear();
+    localStorage.clear();
   });
 
   it("should render user details correctly", async () => {

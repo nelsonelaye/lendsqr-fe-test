@@ -28,8 +28,25 @@ const UserDetails = () => {
 
   const { data: user, isLoading, isError } = useQuery({
     queryKey: ["user", id],
-    queryFn: () => fetchUserById(id),
+    queryFn: async () => {
+      const cacheKey = `user_${id}`;
+      
+      // get cached data from local storage
+      const cachedData = localStorage.getItem(cacheKey);
+      if (cachedData) {
+        return JSON.parse(cachedData);
+      }
+
+      // API Fallback if not cached
+      const data = await fetchUserById(id);
+      
+      // Save the newly fetched user to local storage
+      localStorage.setItem(cacheKey, JSON.stringify(data));
+      
+      return data;
+    },
     enabled: !!id,
+    staleTime: 1000 * 60 * 60, // 1 hour stale time for aggressive caching
   });
 
   if (isError) {
