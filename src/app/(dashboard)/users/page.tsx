@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import styles from "./users.module.scss";
 import { MdFilterList } from "react-icons/md";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
@@ -12,9 +12,10 @@ import { fetchAllUsers, fetchUsers } from "@/lib/api";
 import UserMenu from "@/components/UserMenu/UserMenu";
 import Pagination from "@/components/Pagination/Pagination";
 import TableSkeleton from "@/components/TableSkeleton/TableSkeleton";
+import Filter from "@/components/Filter/Filter";
 
 
-export const tableTitles = [
+const tableTitles = [
   "organization",
   "username",
   "email",
@@ -27,7 +28,7 @@ export const tableTitles = [
 const Users = () => {
   const [offset, setOffset] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [isFIlter, setIsFilter] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
 
   const { data: allUsers } = useQuery({
@@ -64,11 +65,31 @@ const Users = () => {
     queryFn: () => fetchUsers(offset, itemsPerPage),
   });
 
-  console.log("users", users)
 
-  const handleFilterDisplay = () => {
-    setIsFilter(!isFIlter);
+  const filterRef = useRef<HTMLDivElement>(null);
+
+  const toggleFilter = () => {
+    setIsFilterOpen((prev) => !prev);
   };
+
+  // close filter when clicking outside the panel
+  useEffect(() => {
+    if (!isFilterOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as Element;
+
+      if (target.closest("[data-radix-popper-content-wrapper]")) return;
+
+      // Ignore clicks on any filter icon
+      if (target.closest("[data-filter-icon]")) return;
+
+      if (filterRef.current && !filterRef.current.contains(target)) {
+        setIsFilterOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isFilterOpen]);
 
 
   return (
@@ -80,7 +101,11 @@ const Users = () => {
         ))}
       </div>
       <div className={styles["table-container"]}>
-        {/* {isFIlter && <Filter onClick={handleFilterDisplay} />} */}
+        {isFilterOpen && (
+          <div ref={filterRef}>
+            <Filter onClose={toggleFilter} />
+          </div>
+        )}
 
         <table>
           <thead>
@@ -89,11 +114,13 @@ const Users = () => {
                 <th key={item}>
                   <div style={{ display: "flex", alignItems: "center" }}>
                     <span>{item}</span>
-                    <MdFilterList
-                      fontSize={18}
-                      cursor="pointer"
-                      onClick={handleFilterDisplay}
-                    />
+                    <span data-filter-icon="true">
+                      <MdFilterList
+                        fontSize={18}
+                        style={{ cursor: "pointer" }}
+                        onClick={toggleFilter}
+                      />
+                    </span>
                   </div>
                 </th>
               ))}
@@ -122,7 +149,7 @@ const Users = () => {
                   <td>{user?.email}</td>
                   <td>{user?.phoneNumber}</td>
                   <td>
-                    {dayjs(user?.createdAt).format("MMM DD, YYYY HH:MM A")}
+                    {dayjs(user?.createdAt).format("MMM DD, YYYY hh:mm A")}
                   </td>
                   <td>
                     <div

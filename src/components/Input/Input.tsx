@@ -23,6 +23,9 @@ const FormInput = ({
 
   return (
     <div className={styles["form-input-wrapper"]}>
+      <label htmlFor={name} className={styles["form-label"]}>
+        {label}
+      </label>
       <div
         className={`${styles["form-input"]} ${error && styles["form-input--error"]}`}
       >
