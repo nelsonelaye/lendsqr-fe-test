@@ -56,6 +56,12 @@ describe("Pagination Component", () => {
   it("should handle completely empty state (0 items)", () => {
     render(<Pagination {...defaultProps} total={0} />);
     
-    expect(screen.getByText(/showing/i)).toBeInTheDocument();
+    expect(screen.getByText(/out of 0/i)).toBeInTheDocument();
+    
+    expect(screen.getByRole("button", { name: /previous page/i })).toBeDisabled();
+    expect(screen.getByRole("button", { name: /next page/i })).toBeDisabled();
+    
+    expect(screen.getByRole("button", { name: "Page 1" })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Page 2" })).not.toBeInTheDocument();
   });
 });
