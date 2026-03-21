@@ -8,7 +8,7 @@ export interface ButtonInterface extends React.ButtonHTMLAttributes<HTMLButtonEl
 export interface FormInputInterface extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   placeholder: string;
-  suffiX?: string;
+  suffix?: string;
   label?: string;
   error?: string;
   children?: React.ReactNode;
@@ -25,12 +25,28 @@ export interface LayoutInterface {
   children: React.ReactNode;
 }
 
-export interface NaviagtionInterface {
+export interface NavigationInterface {
   imageSrc: string;
   title: string;
   link?: string;
   suffixIcon?: JSX.Element;
   onClickAction?: () => void;
+}
+
+
+export interface CustomInputProps {
+  value?: string;
+  onClick?: () => void;
+  placeholder?: string;
+  calendarRef?: React.RefObject<HTMLButtonElement | null>;
+}
+
+export interface DatePickerInputProps {
+  label?: string;
+  name?: string;
+  placeholder?: string;
+  value?: Date | null;
+  onChange?: (date: Date | null) => void;
 }
 
 export type UserStatus = "inactive" | "pending" | "blacklisted" | "active";
