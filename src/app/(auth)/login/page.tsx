@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useFormik } from "formik";
 import { validationSchema } from "@/lib/schema";
 import { useMemo } from "react";
+import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
@@ -91,7 +92,8 @@ const Login = () => {
               }
             />
 
-            <p className={styles["forget-password"]}>Forgot PASSWORD?</p>
+            <Link href="/forgot-password">
+             <p className={styles["forget-password"]}>Forgot PASSWORD?</p></Link>
 
             <Button variant="primary" type="submit" disabled={!isFormValid}>
               Log in

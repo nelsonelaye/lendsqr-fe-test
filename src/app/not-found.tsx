@@ -1,14 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Layout from "../layouts/Dashboard/DashboardLayout";
 import { RiFileUnknowLine } from "react-icons/ri";
 import styles from "@/styles/not-found.module.scss";
 import Button from "@/components/Button/Button";
 
 export default function NotFound() {
   return (
-    <Layout>
+
       <div className={styles.container}>
         <RiFileUnknowLine size={120} className={styles.icon} />
 
@@ -23,6 +22,5 @@ export default function NotFound() {
           <Button variant="primary">Back to Dashboard</Button>
         </Link>
       </div>
-    </Layout>
   );
 }
