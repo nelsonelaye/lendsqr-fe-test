@@ -1,11 +1,11 @@
 "use client";
-
-import Link from "next/link";
 import { RiFileUnknowLine } from "react-icons/ri";
 import styles from "@/styles/not-found.module.scss";
 import Button from "@/components/Button/Button";
+import { useRouter } from "next/navigation";
 
-export default function NotFound() {
+const NotFound = () => {
+    const router = useRouter();
   return (
 
       <div className={styles.container}>
@@ -18,9 +18,15 @@ export default function NotFound() {
           </p>
         </div>
 
-        <Link href="/">
-          <Button variant="primary">Back to Dashboard</Button>
-        </Link>
+    
+          <div>
+          <Button variant="primary" onClick={() => router.back()} >Go Back</Button>
+              
+          </div>
+     
       </div>
   );
 }
+
+
+export default NotFound;
