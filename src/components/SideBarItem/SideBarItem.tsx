@@ -3,10 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./SideBarItem.module.scss";
-import { NaviagtionInterface } from "@/lib/types";
+import { NavigationInterface } from "@/lib/types";
 import Image from "next/image";
 
-const SideBarItem = ({ imageSrc, title, link, suffixIcon, onClickAction }: NaviagtionInterface) => {
+const SideBarItem = ({
+  imageSrc,
+  title,
+  link,
+  suffixIcon,
+  onClickAction,
+}: NavigationInterface) => {
   const pathname = usePathname();
   const isActive = link ? pathname === link : false;
 
@@ -23,7 +29,11 @@ const SideBarItem = ({ imageSrc, title, link, suffixIcon, onClickAction }: Navia
           </Link>
         </div>
       ) : (
-        <div className={styles["nav-link"]} style={{ opacity: 1 }} onClick={onClickAction}>
+        <div
+          className={styles["nav-link"]}
+          style={{ opacity: 1 }}
+          onClick={onClickAction}
+        >
           <Image src={imageSrc} alt={title} width={16} height={16} />
           <span>{title}</span>
           {suffixIcon && <span>{suffixIcon}</span>}

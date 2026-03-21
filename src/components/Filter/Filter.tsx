@@ -38,10 +38,10 @@ const Filter = ({ onClose }: FilterProps) => {
       />
 
       <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-        <Button variant="secondary" style={{ width: "98px" }}>Reset</Button>
-        <Button variant="primary" onClick={onClick} style={{ width: "98px" }}>Filter</Button>
+        <Button variant="secondary" style={{ width: "98px" }} type="reset">Reset</Button>
+        <Button variant="primary" style={{ width: "98px" }} type="submit">Filter</Button>
       </div>
-    </div>
+    </form>
   );
 };
 

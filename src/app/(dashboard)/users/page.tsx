@@ -14,24 +14,22 @@ import Pagination from "@/components/Pagination/Pagination";
 import TableSkeleton from "@/components/TableSkeleton/TableSkeleton";
 import Filter from "@/components/Filter/Filter";
 
-
-const tableTitles = [
-  "organization",
-  "username",
-  "email",
-  "phone number",
-  "date joined",
-  "status",
-];
-
-
 const Users = () => {
+  const tableTitles = [
+    "organization",
+    "username",
+    "email",
+    "phone number",
+    "date joined",
+    "status",
+  ];
+
   const [offset, setOffset] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
 
-  const { data: allUsers } = useQuery({
+  const { data: allUsers, isError: isAllUsersError } = useQuery({
     queryKey: ["users", "all"],
     queryFn: fetchAllUsers,
   });
@@ -60,7 +58,7 @@ const Users = () => {
     return list;
   }, [allUsers]);
 
-  const { data: users, isLoading } = useQuery({
+  const { data: users, isLoading, isError: isUsersError } = useQuery({
     queryKey: ["users", offset, itemsPerPage],
     queryFn: () => fetchUsers(offset, itemsPerPage),
   });
@@ -128,7 +126,13 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {isLoading ? (
+            {(isAllUsersError || isUsersError) ? (
+              <tr style={{ height: "400px" }}>
+                <td colSpan={7} className={styles["empty-state"]}>
+                  <p style={{ color: "#E4033B" }}>Failed to load users. Please check your network or try again later.</p>
+                </td>
+              </tr>
+            ) : isLoading ? (
               <TableSkeleton rows={10} />
             ) : (users?.data?.length ?? 0) === 0 ? (
               <tr

@@ -9,7 +9,7 @@ import {
   businessNavigations,
   customerNavigations,
   settingsNavigations,
-} from "./utils/contants";
+} from "./utils/constants";
 
 interface SideBarProps {
   isOpen?: boolean;

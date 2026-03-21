@@ -26,11 +26,26 @@ const TAB_LABELS = [
 const UserDetails = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data: user, isLoading } = useQuery({
+  const { data: user, isLoading, isError } = useQuery({
     queryKey: ["user", id],
     queryFn: () => fetchUserById(id),
     enabled: !!id,
   });
+
+  if (isError) {
+    return (
+      <div>
+        <Link href="/users" className={styles["navigate-back"]}>
+          <Image src="/svgs/arrow-back.svg" alt="Back to Users" width={27} height={9} />
+          <span>Back to Users</span>
+        </Link>
+        <div style={{ padding: "100px 0", textAlign: "center", color: "#E4033B" }}>
+          <h2>Failed to load user profile.</h2>
+          <p>Please check your connection and try again.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
